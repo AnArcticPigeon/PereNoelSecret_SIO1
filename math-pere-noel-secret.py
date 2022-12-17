@@ -1,46 +1,57 @@
 import random
 
-def tirage():
-    nb_persone = int(input("Saisir le nombre de personne présente a la soirée: "))
-    print("Il y a",nb_persone-1,"possibilitées possible")
-    print("Le nombre de possibilitée totale est de",(nb_persone-1),"possibilitées")
+
+
+nb_personne = int(input("Saisir le nombre de personne présente a la soirée: "))
 
 
 
-def permutation():
-    nb_persone = int(input("Saisir le nombre de personne présente a la soirée: "))
+
+
+def tirage(nb_personne):
+    print("Il y a",nb_personne-1,"possibilitées possible")
+    print("Le nombre de possibilitée totale est de",(nb_personne-1),"possibilitées")
+
+
+
+
+def permutation(nb_personne):
     nb_permutation = 1
-    for i in range(nb_persone):
-        print(nb_permutation,"x",i+1)
+
+    for i in range(nb_personne):
         nb_permutation = nb_permutation * (i+1)
-
-
     print("Il y a",nb_permutation,"possible")
 
-permutation()
+permutation(nb_personne)
 
 
-def tirage_compliquer():
-    nb_persone = int(input("Saisir le nombre de personne présente a la soirée: "))
+def tirage_compliquer(nb_personne):
+    
 
     nb = 1
-    l_personne = [1,2,3,4,5,6]
     l_cadeau_tire = []
-    for c in l_personne:
+    l_cadeau2 = []
+    #boucle pour chaque persone
+    for i in range(nb_personne):
         p = True
-        while(nb == c or p == True):
-            nb = random.randrange(1,nb_persone)
+        l_cadeau = []
+        l_cadeau.append(i+1)
+        #boucle tant que le cadeau tire est celui de la persone ou un deja tire
+        while(nb == i+1 or p == True):
+            nb = random.randrange(1,nb_personne+1)
             if nb in l_cadeau_tire:
                 p = True
             else:
                 p = False
-                print(nb)
-        print(c,"a obtenue le cadeau de",nb)
+
+        l_cadeau.append(nb)
+        l_cadeau2.append(l_cadeau)
         l_cadeau_tire.append(nb)
-        
+        print(i+1,"a obtenue le cadeau de",nb)
+        i=i+1
+    print(l_cadeau_tire)
+    print(l_cadeau2)
+tirage_compliquer(nb_personne)
 
 
-
-
-    
 
