@@ -3,7 +3,7 @@ import random,math
 
 
 nb_personne = int(input("Saisir le nombre de personne présente a la soirée: "))
-
+permutations = input("Voulez vous créer une liste de toute les permutation possible: oui/non: ")
 
 
 
@@ -56,32 +56,36 @@ def permutation(nb_personne):
     return nb_permutation
 
 
-def tirage_compliquer(nb_personne,nb_permutation):
+def tirage_compliquer(nb_personne,nb_permutation,permutations):
     l_permutation = []
     l_derangement = []
     numTour=1
+    
     #boucle tant que l'on a pas fait toute les possibilitée de permutation possible
     while(len(l_derangement) < nb_permutation):
         
         print("tour:",numTour)
+        print("nombre actuelle de derangements trouvée:",len(l_derangement))
+        print(nb_permutation)
         l_cadeau2 = []
-        l_cadeau_tire = []
+        l_cadeau_tire = [0]
         
         
 
         #boucle donant un cadeau unique a chaque persone
         for i in range(nb_personne):
-            p = True
             nb = 0
             l_cadeau = []
             
             #boucle tant que le cadeau tire est celui de la persone ou un deja tire
-            while(p == True):
-                nb = random.randrange(1,nb_personne+1)
-                if(nb in l_cadeau_tire or nb == i+1):
-                    break
-                else:
-                    p = False
+            if(permutations == "oui"):
+                while(nb in l_cadeau_tire):
+                    nb = random.randrange(1,nb_personne+1)
+            else:
+                while(nb in l_cadeau_tire or nb == i+1):
+                    nb = random.randrange(1,nb_personne+1)
+
+
                 '''
                 if(nb == nb_personne and nb not in l_cadeau_tire):
                     y = True
@@ -97,14 +101,16 @@ def tirage_compliquer(nb_personne,nb_permutation):
             print(i+1,"a obtenue le cadeau de",nb)
             i=i+1
             
-        if(l_cadeau2 not in l_derangement):
-            l_derangement.append(l_cadeau2)
+        if(l_cadeau2 not in l_permutation):
+            l_permutation.append(l_cadeau2)
 
         numTour = numTour + 1
+
+    print(l_derangement)
     print("Il y a ",len(l_permutation),"permutation possible")
     print("Il y a ",len(l_derangement),"derangement possible")
-    print(l_derangement)
-tirage_compliquer(nb_personne,permutation(nb_personne))
+    
+tirage_compliquer(nb_personne,permutation(nb_personne),permutations)
 
 
 
