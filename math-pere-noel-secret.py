@@ -34,7 +34,7 @@ def tirage_compliquer(nb_personne,nb_permutation,permu):
     l_derangement = [] #liste contenant toute les derangements trouvée
     numTest=1
     
-    while(numTest < nb_test):
+    while(numTest <= nb_test):
 
         print("Test:",numTest,"/",nb_test)
         l_derangement_u = aleatoire(permu,nb_personne)
