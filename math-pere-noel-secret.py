@@ -39,13 +39,16 @@ def tirage_compliquer(nb_personne,nb_permutation,permu):
         print("Test:",numTest,"/",nb_test)
         l_derangement_u = aleatoire(permu,nb_personne)
 
-        if(l_derangement_u not in l_permutation):
+        #si la permutation actuelle n'est pas deja presente dans la liste de tout les permutations, alors on l'ajoute
+        if(binarySearch(l_permutation, 0, len(l_permutation)-1, l_derangement_u)):
             l_permutation.append(l_derangement_u)
             l_permutation.sort()
 
-        if(l_derangement_u not in l_derangement):
+        #si le derangement actuelle n'est pas deja present dans la liste de tout les derangement, alors on l'ajoute
+        if(binarySearch(l_derangement, 0, len(l_derangement)-1, l_derangement_u) == -1):
             l_derangement.append(l_derangement_u)
             l_derangement.sort()
+
 
         numTest = numTest + 1
 
@@ -96,6 +99,27 @@ def aleatoire(permutations,nb_personne):
     l_derangement_u = int("".join(map(str,l_derangement_u)))
     return l_derangement_u
         
+#merci google, algo cherchant si un element est presant dans une liste en utilisant la methode "diviser pour reigner" (utiliser a la place de if(element in liste):) car plus rapide avec un grand nombre de personne et de tests
+def binarySearch(arr, l, r, x):
+
+    while l <= r:
+        mid = l + (r - l) // 2
+
+        # Check if x is present at mid
+        if arr[mid] == x:
+            return mid
+ 
+        # If x is greater, ignore left half
+        elif arr[mid] < x:
+            l = mid + 1
+ 
+        # If x is smaller, ignore right half
+        else:
+            r = mid - 1
+    
+    # If we reach here, then the element
+    # was not present
+    return -1
       
 tirage_compliquer(nb_personne,permutation(nb_personne),permu)
 
