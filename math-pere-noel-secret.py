@@ -82,6 +82,7 @@ def tirage_compliquer(nb_personne,nb_permutation):
         numTour = numTour + 1
         
     #print("Il y a ",len(l_permutation),"permutation possible")
+    print(l_derangement)
     print("Il y a",nb_permutation,"permutations possible pour ",nb_personne,"invitées")
     print("L'algorithme a trouver",len(l_derangement),"derangements possible avec",nb_personne,"personnes presente lors de ses",nb_test,"tests")
     print("Il y a ",derangement(nb_personne),"derangements possible")
