@@ -1,4 +1,4 @@
-import random,math
+import random,math,time
 
 
 
@@ -60,6 +60,7 @@ def aleatoire(permutations,nb_personne):
 
 def tirage_compliquer(nb_personne,nb_permutation):
     permutations = input("Voulez vous créer une liste de toute les permutation possible: oui/non: ")
+    start_time = time.time()
     l_permutation = []
     l_derangement = []
     numTour=1
@@ -81,6 +82,7 @@ def tirage_compliquer(nb_personne,nb_permutation):
     print("Il y a",nb_permutation,"permutations possible pour ",nb_personne,"invitées")
     print("L'algorithme a trouver",len(l_derangement),"derangements possible avec",nb_personne,"personnes presente lors de ses",nb_test,"tests")
     print("Il y a ",derangement(nb_personne),"derangements possible")
+    print("--- %s seconds ---" % (time.time() - start_time))
     
 tirage_compliquer(nb_personne,permutation(nb_personne))
 
