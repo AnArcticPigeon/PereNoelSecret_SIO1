@@ -25,7 +25,7 @@ def derangement(n):
 #print(derangement(6))
 
 
-
+#dqziyudgfQ
 
 
 def permutation(nb_personne):
