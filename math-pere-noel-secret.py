@@ -25,9 +25,6 @@ def derangement(n):
 #print(derangement(6))
 
 
-#dqziyudgfQ
-
-
 def permutation(nb_personne):
     nb_permutation = 1
 
@@ -36,13 +33,12 @@ def permutation(nb_personne):
     return nb_permutation
 
 def aleatoire(permutations,nb_personne):
-    l_cadeau2 = []
+    l_derangement_u = []
     l_cadeau_tire = [0]
 
     #boucle donant un cadeau unique a chaque persone
     for i in range(nb_personne,):
         nb = 0
-        l_cadeau = []
         
         #boucle tant que le cadeau tire est celui de la persone ou un deja tire
         if(permutations == "oui"):
@@ -56,12 +52,11 @@ def aleatoire(permutations,nb_personne):
                     nb = random.randrange(1,nb_personne+1)
 
         l_cadeau_tire.append(nb)
-        l_cadeau.append(i+1)
-        l_cadeau.append(nb)
-        l_cadeau2.append(l_cadeau)
+        l_derangement_u.append(nb)
         #print(i+1,"a obtenue le cadeau de",nb)
         i=i+1
-    return l_cadeau2
+    l_derangement_u = int("".join(map(str,l_derangement_u)))
+    return l_derangement_u
 
 def tirage_compliquer(nb_personne,nb_permutation):
     permutations = input("Voulez vous créer une liste de toute les permutation possible: oui/non: ")
@@ -73,15 +68,16 @@ def tirage_compliquer(nb_personne,nb_permutation):
     while(numTour < nb_test):
         
         print("tour:",numTour,"/",nb_test)
-        l_cadeau2 = aleatoire(permutations,nb_personne)
-            
-        if(l_cadeau2 not in l_permutation):
-            l_permutation.append(l_cadeau2)
-        if(l_cadeau2 not in l_derangement):
-            l_derangement.append(l_cadeau2)
+        l_derangement_u = aleatoire(permutations,nb_personne)
+        if(l_derangement_u not in l_permutation):
+            l_permutation.append(l_derangement_u)
+            l_permutation.sort()
+        if(l_derangement_u not in l_derangement):
+            l_derangement.append(l_derangement_u)
+            l_derangement.sort()
         numTour = numTour + 1
         
-    #print("Il y a ",len(l_permutation),"permutation possible")
+    print(l_derangement)
     print("Il y a",nb_permutation,"permutations possible pour ",nb_personne,"invitées")
     print("L'algorithme a trouver",len(l_derangement),"derangements possible avec",nb_personne,"personnes presente lors de ses",nb_test,"tests")
     print("Il y a ",derangement(nb_personne),"derangements possible")
