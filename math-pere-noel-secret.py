@@ -28,13 +28,19 @@ def derangement(n):
 
 
 
-def tirage_compliquer(nb_personne,nb_permutation,permu):
+def tirage_compliquer(nb_personne,nb_permutation,permu,nb_derangement):
     start_time = time.time()
     l_permutation = [] #liste contenant toute les permutation trouvée
     l_derangement = [] #liste contenant toute les derangements trouvée
     numTest=1
+    finit = 0
     
-    while(numTest <= nb_test):
+    while(numTest <= nb_test and finit == 0):
+
+        if(len(l_derangement) == nb_derangement or len(l_permutation) == nb_permutation):
+            print("Le programe a trouver toute les possibilitée possible.")
+            print(len(l_derangement),"/",nb_derangement,"et",len(l_permutation),"/",nb_permutation)
+            finit = 1
 
         print("Test:",numTest,"/",nb_test)
         l_derangement_u = aleatoire(permu,nb_personne)
@@ -121,7 +127,7 @@ def binarySearch(arr, l, r, x):
     # was not present
     return -1
       
-tirage_compliquer(nb_personne,permutation(nb_personne),permu)
+tirage_compliquer(nb_personne,permutation(nb_personne),permu,derangement(nb_personne))
 
 
 
