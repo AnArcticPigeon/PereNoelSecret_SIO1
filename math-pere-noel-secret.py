@@ -46,7 +46,7 @@ def tirage_compliquer(nb_personne,nb_permutation,permu,nb_derangement):
         l_derangement_u = aleatoire(permu,nb_personne)
 
         #si la permutation actuelle n'est pas deja presente dans la liste de tout les permutations, alors on l'ajoute
-        if(binarySearch(l_permutation, 0, len(l_permutation)-1, l_derangement_u)):
+        if(binarySearch(l_permutation, 0, len(l_permutation)-1, l_derangement_u) == -1):
             l_permutation.append(l_derangement_u)
             l_permutation.sort()
 
