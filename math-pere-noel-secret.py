@@ -11,7 +11,7 @@ Un dérangement d'un ensemble d'éléments est une permutation telle que aucun �
 
 nb_personne = int(input("Saisir le nombre de personne présente a la soirée: "))
 nb_test = int(input("Saisir le nombre de test a effectuer:"))
-permu = input("Voulez vous calculez toute les permutations possible ?: oui/non: (Trés lemp!!!) ")
+permu = input("Voulez vous calculer toute les permutations possible ?: oui/non: (Trés lemp!!!) ")
 
 
 #merci google, algorithme recursif calculant le nombrede derangement pour n elements 
@@ -39,36 +39,37 @@ def tirage_compliquer(nb_personne,nb_permutation,permu,nb_derangement):
 
         if(len(l_permutation) == nb_permutation):
             print("Le programe a trouver toute les permutation possible.")
-            print(len(l_derangement),"/",nb_derangement,"et",len(l_permutation),"/",nb_permutation)
             finit = 1
 
         if(len(l_derangement) == nb_derangement and permu != "oui"):
-            print("Le programe a trouver toute les permutation possible.")
-            print(len(l_derangement),"/",nb_derangement,"et",len(l_permutation),"/",nb_permutation)
+            print("Le programe a trouver tout les derangements possible.")
             finit = 1
 
-            
+
         print("Test:",numTest,"/",nb_test)
         l_derangement_u = aleatoire(permu,nb_personne)
 
-        #si la permutation actuelle n'est pas deja presente dans la liste de tout les permutations, alors on l'ajoute
-        if(binarySearch(l_permutation, 0, len(l_permutation)-1, l_derangement_u) == -1):
-            l_permutation.append(l_derangement_u)
-            l_permutation.sort()
 
-        #si le derangement actuelle n'est pas deja present dans la liste de tout les derangement, alors on l'ajoute
-        if(binarySearch(l_derangement, 0, len(l_derangement)-1, l_derangement_u) == -1):
-            l_derangement.append(l_derangement_u)
-            l_derangement.sort()
+        
+        if(permu == "oui"):
+            #si la permutation actuelle n'est pas deja presente dans la liste de tout les permutations, alors on l'ajoute
+            if(binarySearch(l_permutation, 0, len(l_permutation)-1, l_derangement_u) == -1):
+                l_permutation.append(l_derangement_u)
+                l_permutation.sort()
+        else:
+            #si le derangement actuelle n'est pas deja present dans la liste de tout les derangement, alors on l'ajoute
+            if(binarySearch(l_derangement, 0, len(l_derangement)-1, l_derangement_u) == -1):
+                l_derangement.append(l_derangement_u)
+                l_derangement.sort()
 
 
         numTest = numTest + 1
 
     #print(l_derangement)
     if(permu == "oui"):
-        print("L'algorithme a trouver",len(l_permutation),"/",nb_permutation,"des permutations possible pour",nb_personne,"personnes lors de ses",nb_test,"tests")
+        print("L'algorithme a trouver",len(l_permutation),"/",nb_permutation,"des permutations possible pour",nb_personne,"personnes en",numTest,"tests")
     else:
-        print("L'algorithme a trouver",len(l_derangement),"/",derangement(nb_personne),"des derangements possible pour",nb_personne,"personnes lors de ses",nb_test,"tests")
+        print("L'algorithme a trouver",len(l_derangement),"/",derangement(nb_personne),"des derangements possible pour",nb_personne,"personnes en",numTest,"tests")
     print("        Temp d'éxecution")
     print("--- %s seconds ---" % (time.time() - start_time))
 
