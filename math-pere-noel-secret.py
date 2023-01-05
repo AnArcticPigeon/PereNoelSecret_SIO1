@@ -59,8 +59,7 @@ def tirage_compliquer(nb_personne,nb_permutation,permu,nb_derangement):
         else:
             #si le derangement actuelle n'est pas deja present dans la liste de tout les derangement, alors on l'ajoute
             if(binarySearch(l_derangement, 0, len(l_derangement)-1, l_derangement_u) == -1):
-                l_derangement.append(l_derangement_u)
-                l_derangement.sort()
+                insertion_sort(l_derangement_u)
 
 
         numTest = numTest + 1
@@ -134,6 +133,14 @@ def binarySearch(arr, l, r, x):
     # was not present
     return -1
       
+
+
+
+
+
+
+
+
 tirage_compliquer(nb_personne,permutation(nb_personne),permu,derangement(nb_personne))
 
 
