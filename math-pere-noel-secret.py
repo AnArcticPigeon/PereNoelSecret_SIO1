@@ -37,11 +37,17 @@ def tirage_compliquer(nb_personne,nb_permutation,permu,nb_derangement):
     
     while(numTest <= nb_test and finit == 0):
 
-        if(len(l_derangement) == nb_derangement or len(l_permutation) == nb_permutation):
-            print("Le programe a trouver toute les possibilitée possible.")
+        if(len(l_permutation) == nb_permutation):
+            print("Le programe a trouver toute les permutation possible.")
             print(len(l_derangement),"/",nb_derangement,"et",len(l_permutation),"/",nb_permutation)
             finit = 1
 
+        if(len(l_derangement) == nb_derangement and permu != "oui"):
+            print("Le programe a trouver toute les permutation possible.")
+            print(len(l_derangement),"/",nb_derangement,"et",len(l_permutation),"/",nb_permutation)
+            finit = 1
+
+            
         print("Test:",numTest,"/",nb_test)
         l_derangement_u = aleatoire(permu,nb_personne)
 
